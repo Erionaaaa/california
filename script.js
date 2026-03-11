@@ -4,6 +4,9 @@ const revealElements = document.querySelectorAll(".reveal");
 const menuModal = document.getElementById("menuModal");
 const lightbox = document.getElementById("lightbox");
 const navbar = document.getElementById("navbar");
+const socialProofSection = document.querySelector(".social-proof");
+const countUpElements = document.querySelectorAll(".count-up");
+let countUpStarted = false;
 
 revealElements.forEach((el, index) => {
   const delay = Math.min(index * 70, 420);
@@ -28,6 +31,8 @@ window.addEventListener("scroll", () => {
   toggleTopButton();
   toggleNavbarState();
 });
+
+initCountUp();
 
 function handleReveal() {
   const windowHeight = window.innerHeight;
@@ -56,6 +61,68 @@ function toggleNavbarState() {
 
   const isScrolled = document.documentElement.scrollTop > 40 || document.body.scrollTop > 40;
   navbar.classList.toggle("scrolled", isScrolled);
+}
+
+function initCountUp() {
+  if (!socialProofSection || countUpElements.length === 0) {
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    runCountUp();
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          runCountUp();
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.35 }
+  );
+
+  observer.observe(socialProofSection);
+}
+
+function runCountUp() {
+  if (countUpStarted) {
+    return;
+  }
+  countUpStarted = true;
+
+  countUpElements.forEach((el) => {
+    const target = Number(el.dataset.target || 0);
+    const decimals = Number(el.dataset.decimals || 0);
+    const suffix = el.dataset.suffix || "";
+    const duration = 1500;
+    const start = performance.now();
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+
+      if (decimals > 0) {
+        el.textContent = value.toFixed(decimals) + suffix;
+      } else {
+        el.textContent = Math.round(value).toLocaleString("en-US") + suffix;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else if (decimals > 0) {
+        el.textContent = target.toFixed(decimals) + suffix;
+      } else {
+        el.textContent = Math.round(target).toLocaleString("en-US") + suffix;
+      }
+    }
+
+    requestAnimationFrame(update);
+  });
 }
 
 if (topBtn) {
