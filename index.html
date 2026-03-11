@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant California</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="loader">
+<h1>California</h1>
+</div>
+
+<header id="navbar">
+
+<div class="nav">
+
+<a class="logo" href="#home" aria-label="Shko te kryefaqja">California</a>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<a class="reserve-btn" href="https://wa.me/38300000000">Rezervo</a>
+
+</div>
+
+</header>
+
+
+<section id="home" class="hero">
+
+<div class="hero-text reveal">
+
+<h1>Shijo Ushqimin më të Mirë</h1>
+<p>Eksperiencë kulinare që nuk harrohet.</p>
+
+<a href="#menu" class="btn">Shiko Menunë</a>
+
+</div>
+
+</section>
+
+<section class="trust-bar reveal">
+<div class="trust-item">
+<strong>4.9/5</strong>
+<span>Vleresim nga klientet</span>
+</div>
+<div class="trust-item">
+<strong>Fresh Daily</strong>
+<span>Perberes te fresket cdo dite</span>
+</div>
+<div class="trust-item">
+<strong>Open 11:00 - 23:00</strong>
+<span>Sherbim i shpejte dhe profesional</span>
+</div>
+</section>
+
+
+<section id="menu" class="menu">
+
+<h2 class="reveal">Menu</h2>
+
+<div class="menu-grid">
+
+
+<div class="menu-card reveal" onclick="openModal('Pepperoni Pizza','assets/pizzapeperoni.jpg','Mozzarella dhe pepperoni','8.50')">
+<img src="assets/pizzapeperoni.jpg">
+<h3>Pepperoni Pizza</h3>
+</div>
+
+<div class="menu-card reveal" onclick="openModal('Chicken Pasta','assets/Spagetti.jpg','Pulë dhe krem','7.90')">
+<img src="assets/Spagetti.jpg">
+<h3>Chicken Pasta</h3>
+</div>
+
+<div class="menu-card reveal" onclick="openModal('Specialitet','assets/Specialitet 1.jpg','Specialitet Skare','17.00')">
+<img src="assets/Specialitet 1.jpg">
+<h3>Specialitet</h3>
+</div>
+
+<div class="menu-card reveal" onclick="openModal('Pizza Classica','assets/pica.jpg','Domate, djathe dhe oregano','7.50')">
+<img src="assets/pica.jpg">
+<h3>Pizza Classica</h3>
+</div>
+
+<div class="menu-card reveal" onclick="openModal('Sallate Caesar','assets/Sallate.jpg','Sallate e fresket me salce house','6.80')">
+<img src="assets/Sallate.jpg">
+<h3>Sallate Caesar</h3>
+</div>
+
+<div class="menu-card reveal" onclick="openModal('Mix Grill','assets/Specialitet.jpg','Mish i perzier ne skare','18.50')">
+<img src="assets/Specialitet.jpg">
+<h3>Mix Grill</h3>
+</div>
+
+
+
+<div class="menu-card reveal" onclick="openModal('Pasta House','assets/Spagetti.jpg','Pasta e fresket me salce speciale','8.40')">
+<img src="assets/Spagetti.jpg">
+<h3>Pasta House</h3>
+</div>
+
+<div class="menu-card reveal" onclick="openModal('Deluxe Pepperoni','assets/pizzapeperoni.jpg','Pepperoni extra dhe mozzarella','9.80')">
+<img src="assets/pizzapeperoni.jpg">
+<h3>Deluxe Pepperoni</h3>
+</div>
+
+<div class="menu-card reveal" onclick="openModal('California Special','assets/Specialitet 1.jpg','Specialitet i shtepise California','19.90')">
+<img src="assets/Specialitet 1.jpg">
+<h3>California Special</h3>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="gallery" class="gallery">
+
+<h2 class="reveal">Gallery</h2>
+
+<div class="gallery-grid">
+
+<img src="assets/Sallate.jpg" alt="Sallate" onclick="openLightbox(this)">
+<img src="assets/487503257_1174141504413889_8970789491359656402_n.jpg" alt="Ambient restoranti" onclick="openLightbox(this)">
+<img src="assets/500808951_1219042879923751_4088001996782527492_n.jpg" alt="Pjate e sherbyer" onclick="openLightbox(this)">
+<img src="assets/486861197_1170494121445294_2110383536921645137_n.jpg" alt="Ambient premium" onclick="openLightbox(this)">
+<img src="assets/Specialitet 1.jpg" alt="Specialitet skare" onclick="openLightbox(this)">
+<img src="assets/Specialitet.jpg" alt="Mix grill" onclick="openLightbox(this)">
+<img src="assets/Spagetti.jpg" alt="Pasta" onclick="openLightbox(this)">
+<img src="assets/pizzapeperoni.jpg" alt="Pepperoni pizza" onclick="openLightbox(this)">
+<img src="assets/pica.jpg" alt="Pizza classica" onclick="openLightbox(this)">
+<img src="assets/california restaurant.jpeg" alt="Brendesia e restorantit" onclick="openLightbox(this)">
+<img src="assets/herosection.jpg" alt="Pamje hero" onclick="openLightbox(this)">
+
+</div>
+
+</section>
+
+<section id="reservation" class="reservation">
+
+<h2>Rezervo Tavolinën</h2>
+
+<form id="reservationForm">
+
+<div class="form-group">
+<input type="text" id="name" placeholder="Emri juaj" required>
+</div>
+
+<div class="form-group">
+<input type="tel" id="phone" placeholder="Numri telefonit" required>
+</div>
+
+<div class="form-group">
+<input type="date" id="date" required>
+</div>
+
+<div class="form-group">
+<input type="time" id="time" required>
+</div>
+
+<div class="form-group">
+<input type="number" id="guests" placeholder="Numri i personave" required>
+</div>
+
+<button type="submit" class="btn">Rezervo Tavolinë</button>
+
+</form>
+
+<div id="successMessage"></div>
+
+</section>
+
+
+<section id="contact" class="contact reveal">
+
+<h2>Contact</h2>
+
+<p>📍 Prishtinë</p>
+<p>📞 +383 44 000 000</p>
+<p>
+<a class="contact-map" href="https://www.google.com/maps/search/?api=1&query=Restaurant+California+Prishtine" target="_blank" rel="noopener noreferrer">Shiko lokacionin ne Google Maps</a>
+</p>
+
+<a class="btn" href="https://wa.me/38300000000">Rezervo në WhatsApp</a>
+
+</section>
+
+
+<footer class="site-footer">
+
+<div class="footer-grid">
+<div class="footer-col">
+<h3 class="footer-brand">California</h3>
+<p>Eksperience premium ne ushqim, ambient dhe sherbim.</p>
+</div>
+
+<div class="footer-col">
+<h4>Navigim</h4>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div class="footer-col">
+<h4>Lokacioni</h4>
+<p>Prishtine, Kosove</p>
+<a class="footer-map" href="https://www.google.com/maps/search/?api=1&query=Restaurant+California+Prishtine" target="_blank" rel="noopener noreferrer">Hape ne Google Maps</a>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Restaurant California. All rights reserved.</p>
+</div>
+
+</footer>
+
+
+<button id="topBtn">↑</button>
+
+
+<div id="menuModal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">×</span>
+
+<img id="modalImg">
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalDesc"></p>
+
+<span id="modalPrice"></span>
+
+</div>
+
+</div>
+
+
+<div id="lightbox" onclick="closeLightbox()">
+<img id="lightboxImg">
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
